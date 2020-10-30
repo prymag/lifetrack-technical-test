@@ -1,0 +1,14 @@
+{
+    "name": "prymag/lifetrack-technical-test",
+    "description": "Technical Test",
+    "authors": [
+        {
+            "name": "perry",
+            "email": "pmgd2nd@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Prymag\\Lifetrack\\": "src/"}
+    },
+    "require": {}
+}
