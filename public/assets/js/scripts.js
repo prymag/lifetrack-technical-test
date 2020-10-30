@@ -15,22 +15,51 @@ function onReady(callbackFunc) {
     }
 }
 
-function loadDoc() {
+function ajaxConnect(method, path, params, callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
+          callback(this);
       }
     };
-    xhttp.open("POST", "/ajax.php", true);
-    xhttp.send();
-  }
+    xhttp.open(method, path, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(params));
+}
+
+function validateInputs() {
+    const studies_per_day = document.getElementById('studies_per_day');
+    const study_growth = document.getElementById('study_growth');
+    const months_to_forecast = document.getElementById('months_to_forecast');
+
+    if (studies_per_day.value == '' || study_growth == '' || months_to_forecast == '') {
+        return {errors: 'Please fill up all the fields'};
+    }
+
+    return true;
+}
 
 onReady(function() {
     const form = document.getElementById('forecast_form');
 
     form.addEventListener('submit', function(event) {
-        loadDoc();
+        const isFormValid = validateInputs();
+        const form_errors = document.getElementById('form_errors');
+        form_errors.innerHTML = '';
+
+        if (isFormValid === true) {
+            const data = {
+                studies_per_day: 10,
+                study_growth: 1.3,
+                months_to_forecast: 1
+            }            
+            ajaxConnect('POST', '/ajax.php', data, function(el) {
+                console.log(el.responseText);
+            });
+        } else {
+            console.log(isFormValid);
+            form_errors.innerHTML = isFormValid.errors;
+        }
         return false;
     })
 })
