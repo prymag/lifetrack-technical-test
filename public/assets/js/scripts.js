@@ -60,7 +60,9 @@ onReady(function() {
         if (isFormValid === true) {
             
             const base_tag = document.getElementById('base_tag').href;
-            ajaxConnect('POST', base_tag + '/ajax.php', getData(), function(el) {
+
+            const ajax_url = base_tag != '' ? base_tag + '/ajax.php' : 'ajax.php';
+            ajaxConnect('POST', ajax_url, getData(), function(el) {
                 const result = JSON.parse(el.responseText);
 
                 if (result.success) {
