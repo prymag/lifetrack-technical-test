@@ -1,0 +1,147 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+    background: #f7f7f7;
+    line-height: 1;
+    font-size: 16px;
+    font-family: 'Raleway', Helvetica, Arial, Verdana, sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+* {
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+.container {
+    width: 100%;
+    max-width: 1440px;
+    padding:10px 20px;
+    margin: 0 auto;
+}
+.hidden {
+    display: none;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+.title .bar {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 2px;
+    background-color: #0098dc;
+}
+.title h1 {
+    padding:0 20px;
+    width: 50%;
+}
+.title h1.small {
+    width: 20%;
+}
+#forecast_form {
+    max-width: 600px;
+    margin:0 auto 30px;
+}
+.control-group {
+    width: 100%;
+    padding: 5px;
+}
+.control-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.control-group input {
+    display: block;
+    line-height: 40px;
+    height: 40px;
+    width: 100%;
+    padding: 0 10px;
+    background: #f5f8fa;
+    border: 1px solid #dddddd;
+}
+.control-group input:focus {
+    outline: none !important;
+    border: 1px solid #66BEE8;
+}
+.form-row {
+    display: flex;
+    justify-content: center;
+}
+button.submit {
+    background-color: #0098dc; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+button.submit:hover {
+    background-color: #66BEE8;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+table td,
+table th {
+    text-align: left;
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}

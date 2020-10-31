@@ -31,8 +31,9 @@ const table_renderer = function(){
         const studies = document.createElement('td');
         const cost = document.createElement('td');
 
+        const formatter = Intl.NumberFormat();
         month_year.innerHTML = study.month_year;
-        studies.innerHTML = study.studies_in_month;
+        studies.innerHTML = formatter.format(study.studies_in_month);
         cost.innerHTML = study.total_cost_formatted;
 
         tr.appendChild(month_year);

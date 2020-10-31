@@ -61,6 +61,7 @@ onReady(function() {
                 const result = JSON.parse(el.responseText);
 
                 if (result.success) {
+                    document.getElementById('result_wrapper').classList.remove('hidden');
                     table_renderer.render(document.getElementById('result'), result.data)
                 }
             });
