@@ -2,6 +2,10 @@
 
 require_once('../vendor/autoload.php');
 
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    exit;
+}
+
 use Prymag\Lifetrack\Forecaster;
 use Prymag\Lifetrack\Validator;
 
