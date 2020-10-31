@@ -28,16 +28,24 @@ function ajaxConnect(method, path, params, callback) {
 }
 
 function validateInputs() {
-    const studies_per_day = document.getElementById('studies_per_day');
-    const study_growth = document.getElementById('study_growth');
-    const months_to_forecast = document.getElementById('months_to_forecast');
+    const data = getData();
 
-    if (studies_per_day.value == '' || study_growth == '' || months_to_forecast == '') {
-        return {errors: 'Please fill up all the fields'};
+    if (data.studies_per_day == '' || data.months_forecast == '') {
+        return {errors: 'Please fill up required the fields'};
     }
 
     return true;
 }
+
+function getData() {
+    return {
+        studies_per_day: parseInt(document.getElementById('studies_per_day').value),
+        study_growth: parseFloat(document.getElementById('study_growth').value),
+        months_forecast: parseInt(document.getElementById('months_to_forecast').value)
+    }    
+}
+
+
 
 onReady(function() {
     const form = document.getElementById('forecast_form');
@@ -48,16 +56,15 @@ onReady(function() {
         form_errors.innerHTML = '';
 
         if (isFormValid === true) {
-            const data = {
-                studies_per_day: 10,
-                study_growth: 1.3,
-                months_to_forecast: 1
-            }            
-            ajaxConnect('POST', '/ajax.php', data, function(el) {
-                console.log(el.responseText);
+                    
+            ajaxConnect('POST', '/ajax.php', getData(), function(el) {
+                const result = JSON.parse(el.responseText);
+
+                if (result.success) {
+                    table_renderer.render(document.getElementById('result'), result.data)
+                }
             });
         } else {
-            console.log(isFormValid);
             form_errors.innerHTML = isFormValid.errors;
         }
         return false;
