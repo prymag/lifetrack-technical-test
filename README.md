@@ -10,3 +10,13 @@
 4. View in browser via vhost.
 
 If you do not wish to setup a vhost, open `public/src/index.html` and update the `<base id="base_tag" href="/">` accordingly
+
+## Docker
+
+Alternatively you may use this docker [image](https://hub.docker.com/r/prymag/lifetracker-test)
+
+`docker pull prymag/lifetracker-test:latest`
+
+then
+
+`docker run -d -p 80:80 prymag/lifetracker-test`
