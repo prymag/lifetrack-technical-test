@@ -25,7 +25,11 @@ class Study
         $this->date = $date;
     }
 
-    public function setGrowthPercent(float $growth_percent)
+    /**
+     * @param float|null $growth_percent
+     * @return self
+     */
+    public function setGrowthPercent($growth_percent)
     {
         $this->growth_percent = $growth_percent;
         return $this;
@@ -47,7 +51,7 @@ class Study
 
     public function getStudyGrowth(): int
     {
-        return intval(round(($this->studies_per_day * ($this->growth_percent / 100)) + $this->studies_per_day));
+        return ceil(round(($this->studies_per_day * ($this->growth_percent / 100)) + $this->studies_per_day));
     }
 
     public function ram(): Ram

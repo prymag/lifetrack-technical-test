@@ -12,7 +12,15 @@ class Forecaster
      */
     protected $studies = [];
 
-    public function run(int $no_of_studies, int $months, float $growth_percent)
+    /**
+     * Run
+     *
+     * @param integer $no_of_studies
+     * @param integer $months
+     * @param float|null $growth_percent
+     * @return self
+     */
+    public function run(int $no_of_studies, int $months, $growth_percent)
     {
         // Get the first day of this month that way adding 1 month to the date will have the desired effect
         $now = new DateTime('first day of this month');
@@ -25,15 +33,18 @@ class Forecaster
             $study->setGrowthPercent($growth_percent);
 
             $this->studies[] = $study;
+            $no_of_studies = $study->getStudiesPerDay();
         }
         return $this;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         $study_results = [];
         foreach ($this->studies as $study) {
             $study_results[] = [
+                'studies_per_day' => $study->getStudiesPerDay(),
+                'studies_in_month' => $study->getStudiesThisMonth(),
                 'month_year' => $study->getMonthYear(),
                 'ram' => $study->ram()->toArray(),
                 'storage' => $study->storage()->toArray(),
@@ -45,7 +56,7 @@ class Forecaster
         return $study_results;
     }
 
-    public function toJson()
+    public function toJson(): string
     {
         return json_encode($this->toArray());
     }
