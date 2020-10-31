@@ -60,7 +60,7 @@ onReady(function() {
         if (isFormValid === true) {
             
             const base_tag = document.getElementById('base_tag').href;
-
+            base_tag = base_tag.replace(/(?:\/+(\?))/, '$1').replace(/\/+$/, '') // Remove possible trailing slashes
             const ajax_url = base_tag != '' ? base_tag + '/ajax.php' : 'ajax.php';
             ajaxConnect('POST', ajax_url, getData(), function(el) {
                 const result = JSON.parse(el.responseText);
