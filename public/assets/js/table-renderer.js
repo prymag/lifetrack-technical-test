@@ -1,5 +1,8 @@
 const table_renderer = function(){
     
+    const number_formatter = Intl.NumberFormat();
+    const currency_formatter = Intl.NumberFormat('en-us', { style: 'currency', currency: 'USD' });
+
     function createHeaders() {
         const thead = document.createElement('thead');
 
@@ -31,10 +34,10 @@ const table_renderer = function(){
         const studies = document.createElement('td');
         const cost = document.createElement('td');
 
-        const formatter = Intl.NumberFormat();
+        
         month_year.innerHTML = study.month_year;
-        studies.innerHTML = formatter.format(study.studies_in_month);
-        cost.innerHTML = study.total_cost;
+        studies.innerHTML = number_formatter.format(study.studies_in_month);
+        cost.innerHTML = currency_formatter.format(study.total_cost);
 
         tr.appendChild(month_year);
         tr.appendChild(studies);
@@ -75,10 +78,8 @@ const table_renderer = function(){
             total_costs.innerHTML = parseFloat(total_costs.innerHTML) + parseFloat(study.total_cost); // remove the '$'
         });
 
-        const formatter = Intl.NumberFormat();
-        total_studies.innerHTML = formatter.format(total_studies.innerHTML);
-        const currenct_formatter = Intl.NumberFormat('en-us', { style: 'currency', currency: 'USD' });
-        total_costs.innerHTML = currenct_formatter.format(total_costs.innerHTML, )
+        total_studies.innerHTML = number_formatter.format(total_studies.innerHTML);
+        total_costs.innerHTML = currency_formatter.format(total_costs.innerHTML, )
 
         tr.appendChild(label);
         tr.appendChild(total_studies);
