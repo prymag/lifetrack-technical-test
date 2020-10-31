@@ -47,5 +47,9 @@ class Validator
         if (!is_int($request_inputs['months_forecast'])) {
             $this->errors[] = 'Invalid month forecast';
         }
+
+        if ($request_inputs['months_forecast'] > 24) {
+            $this->errors[] = 'Months to forecast is limited to 24 months only';
+        }
     }
 }
