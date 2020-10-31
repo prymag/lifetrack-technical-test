@@ -49,7 +49,6 @@ class Forecaster
                 'ram' => $study->ram()->toArray(),
                 'storage' => $study->storage()->toArray(),
                 'total_cost' => $study->getTotaCostThisMonth(),
-                'total_cost_formatted' => $study->getTotalCostThisMonthFormatted()
             ];
         }
 

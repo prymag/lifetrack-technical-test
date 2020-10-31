@@ -34,7 +34,7 @@ const table_renderer = function(){
         const formatter = Intl.NumberFormat();
         month_year.innerHTML = study.month_year;
         studies.innerHTML = formatter.format(study.studies_in_month);
-        cost.innerHTML = study.total_cost_formatted;
+        cost.innerHTML = study.total_cost;
 
         tr.appendChild(month_year);
         tr.appendChild(studies);
@@ -72,7 +72,7 @@ const table_renderer = function(){
 
         data.forEach(study => {
             total_studies.innerHTML = parseInt(total_studies.innerHTML) + study.studies_in_month;
-            total_costs.innerHTML = parseFloat(total_costs.innerHTML) + parseFloat(study.total_cost_formatted.substring(1)); // remove the '$'
+            total_costs.innerHTML = parseFloat(total_costs.innerHTML) + parseFloat(study.total_cost); // remove the '$'
         });
 
         const formatter = Intl.NumberFormat();

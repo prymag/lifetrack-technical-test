@@ -3,7 +3,6 @@
 namespace Prymag\Lifetrack;
 
 use DateTime;
-use NumberFormatter;
 
 class Study
 {
@@ -75,11 +74,5 @@ class Study
     public function getTotaCostThisMonth(): float
     {
         return  $this->storage()->getCostThisMonth() + $this->ram()->getCostThisMonth();
-    }
-
-    public function getTotalCostThisMonthFormatted(): string
-    {
-        $fmt = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
-        return $fmt->formatCurrency($this->getTotaCostThisMonth(), 'USD');
     }
 }
