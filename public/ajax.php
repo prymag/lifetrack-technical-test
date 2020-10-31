@@ -7,17 +7,12 @@ use Prymag\Lifetrack\Validator;
 
 try {
     $data = json_decode(file_get_contents('php://input'), true);
-
-    /* $data = [
-        'studies_per_day' => 10000,
-        'study_growth' => 1,
-        'months_forecast' => 3
-    ]; */
     $validator = new Validator();
 
     $validator->validate($data);
 
     if (!$validator->isValid()) {
+        header("HTTP/1.1 400 Bad Request");
         echo json_encode([
             'success' => false,
             'error_type' => 'validation',
