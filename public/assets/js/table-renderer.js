@@ -56,6 +56,39 @@ const table_renderer = function(){
         return tbody;
     }
 
+    function createFooter(data) {
+        const tfoot = document.createElement('tfoot');
+
+        const tr = document.createElement('tr');
+
+        const label = document.createElement('th');
+        label.innerHTML = 'Total';
+
+        const total_studies = document.createElement('th');
+        total_studies.innerHTML = 0;
+
+        const total_costs = document.createElement('th');
+        total_costs.innerHTML = 0;
+
+        data.forEach(study => {
+            total_studies.innerHTML = parseInt(total_studies.innerHTML) + study.studies_in_month;
+            total_costs.innerHTML = parseFloat(total_costs.innerHTML) + parseFloat(study.total_cost_formatted.substring(1)); // remove the '$'
+        });
+
+        const formatter = Intl.NumberFormat();
+        total_studies.innerHTML = formatter.format(total_studies.innerHTML);
+        const currenct_formatter = Intl.NumberFormat('en-us', { style: 'currency', currency: 'USD' });
+        total_costs.innerHTML = currenct_formatter.format(total_costs.innerHTML, )
+
+        tr.appendChild(label);
+        tr.appendChild(total_studies);
+        tr.appendChild(total_costs);
+
+        tfoot.appendChild(tr);
+
+        return tfoot;
+    }
+
     /**
      * @param {documentElement} el 
      * @param {object} data 
@@ -65,6 +98,7 @@ const table_renderer = function(){
 
         tbl.appendChild(createHeaders());
         tbl.appendChild(createBody(data));
+        tbl.appendChild(createFooter(data));
         el.innerHTML = '';
         el.appendChild(tbl);
     }

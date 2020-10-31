@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     background: #f7f7f7;
+    color: #212121;
     line-height: 1;
     font-size: 16px;
     font-family: 'Raleway', Helvetica, Arial, Verdana, sans-serif;
@@ -114,7 +115,7 @@ h1 {
     justify-content: center;
 }
 button.submit {
-    background-color: #0098dc; /* Green */
+    background-color: #0098dc;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -134,7 +135,12 @@ table {
     margin-bottom: 1rem;
     background-color: transparent;
 }
+table thead {
+    background: #eeeeee;
+}
 table thead th {
+    font-weight: bold;
+    color: #0098dc;
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
 }
@@ -144,4 +150,16 @@ table th {
     padding: .75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
+}
+table tbody tr:hover,
+table tfoot tr:hover {
+    background: #66BEE8;
+}
+table tbody tr:hover td,
+table tfoot tr:hover th {
+    color: #ffffff;
+}
+table tfoot th {
+    font-weight: bold;
+    color: #333333;
 }
