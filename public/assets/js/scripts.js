@@ -23,6 +23,7 @@ function ajaxConnect(method, path, params, callback) {
       }
     };
     xhttp.open(method, path, true);
+    xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(params));
 }
@@ -51,13 +52,15 @@ onReady(function() {
     const form = document.getElementById('forecast_form');
 
     form.addEventListener('submit', function(event) {
+        event.preventDefault();
         const isFormValid = validateInputs();
         const form_errors = document.getElementById('form_errors');
         form_errors.innerHTML = '';
 
         if (isFormValid === true) {
-                    
-            ajaxConnect('POST', '/ajax.php', getData(), function(el) {
+            
+            const base_tag = document.getElementById('base_tag').href;
+            ajaxConnect('POST', base_tag + '/ajax.php', getData(), function(el) {
                 const result = JSON.parse(el.responseText);
 
                 if (result.success) {
