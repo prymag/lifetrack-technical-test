@@ -15,10 +15,10 @@ If you do not wish to setup a vhost, open `public/src/index.html` and update the
 
 Alternatively you may use this docker [image](https://hub.docker.com/r/prymag/lifetracker-test)
 
-`docker pull prymag/lifetracker-test:latest`
+`docker pull prymag/lifetrack-test:latest`
 
 then
 
-`docker run -d -p 4000:80 prymag/lifetracker-test`
+`docker run -d -p 4000:80 prymag/lifetrack-test`
 
 finally visit `http://localhost:4000` on your browser
