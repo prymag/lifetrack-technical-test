@@ -19,4 +19,6 @@ Alternatively you may use this docker [image](https://hub.docker.com/r/prymag/li
 
 then
 
-`docker run -d -p 80:80 prymag/lifetracker-test`
+`docker run -d -p 4000:80 prymag/lifetracker-test`
+
+finally visit `http://localhost:4000` on your browser
