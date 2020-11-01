@@ -13,7 +13,7 @@ If you do not wish to setup a vhost, open `public/src/index.html` and update the
 
 ## Docker
 
-Alternatively you may use this docker [image](https://hub.docker.com/r/prymag/lifetracker-test)
+Alternatively you may use this docker [image](https://hub.docker.com/r/prymag/lifetrack-test)
 
 `docker pull prymag/lifetrack-test:latest`
 
